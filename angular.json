@@ -133,6 +133,41 @@
           }
         }
       }
+    },
+    "ngx-tutorial-overlay": {
+      "root": "projects/ngx-tutorial-overlay",
+      "sourceRoot": "projects/ngx-tutorial-overlay/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-tutorial-overlay/tsconfig.lib.json",
+            "project": "projects/ngx-tutorial-overlay/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-tutorial-overlay/src/test.ts",
+            "tsConfig": "projects/ngx-tutorial-overlay/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-tutorial-overlay/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-tutorial-overlay/tsconfig.lib.json",
+              "projects/ngx-tutorial-overlay/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ng-in-app-tutorial"

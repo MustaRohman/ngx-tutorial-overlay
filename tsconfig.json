@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-tutorial-overlay": [
+        "dist/ngx-tutorial-overlay"
+      ],
+      "ngx-tutorial-overlay/*": [
+        "dist/ngx-tutorial-overlay/*"
+      ]
+    }
   }
 }
