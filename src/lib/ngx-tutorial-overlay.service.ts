@@ -1,5 +1,12 @@
 import { Injectable, ViewChild } from '@angular/core';
 
+export interface ComponentOption {
+  id: string;
+  title: string;
+  description: string;
+  children?: ComponentOption[];
+}
+
 @Injectable({
   providedIn: 'root'
 })
