@@ -31,5 +31,6 @@ export class NgxTutorialOverlayDirective {
         const compFactory = this.componentFactoryResolver.resolveComponentFactory(NgxTutorialOverlayComponent);
         const compRef = viewContainerRef.createComponent(compFactory);
         compRef.instance.list = [{test: 'test'}];
+        compRef.instance.ref = compRef;
     }
 }

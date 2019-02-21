@@ -1,8 +1,13 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ComponentRef } from '@angular/core';
 
 @Component({
   selector: 'lib-ngx-tutorial-overlay',
-  template: '<div class="overlay">{{list | json}}</div>',
+  template: `
+        <div class="overlay" [style.display]="show ? 'block' : 'none'">
+          <button class="exit" (click)="onExitClick()">✖️</button>
+          {{list | json}}
+        </div>
+    `,
   styles: [`.overlay {
          background-color: red; z-index: 15; position: absolute;
         position: fixed;
@@ -14,15 +19,30 @@ import { Component, OnInit, Input } from '@angular/core';
         height: 100%;
         display: block;
         background-color: rgba(0, 0, 0, 0.589);
-    }`]
+    }`, `
+      .exit {
+        top: 0px;
+        right: 0px;
+        position: absolute;
+        backgroud: rgba(0,0,0,0.5);
+        font-size: 27px;
+      }
+    `]
 })
 export class NgxTutorialOverlayComponent implements OnInit {
 
   @Input() list: any[];
+  @Input() ref: ComponentRef<any>;
+  show = true;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onExitClick() {
+    this.show = false;
+    this.ref.destroy();
   }
 
 }
