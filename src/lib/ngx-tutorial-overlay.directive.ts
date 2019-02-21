@@ -1,4 +1,12 @@
-import { Directive, ElementRef, ViewContainerRef } from '@angular/core';
+import { Directive, ElementRef, ViewContainerRef, Component, ComponentFactory, ComponentFactoryResolver, Input } from '@angular/core';
+
+@Component({
+    template: '{{ test }}',
+    selector: 'lib-test-component'
+})
+export class TestComponent {
+    @Input() test = 'test';
+}
 
 @Directive({
     selector: '[libTutorialOverlay]'
@@ -6,7 +14,11 @@ import { Directive, ElementRef, ViewContainerRef } from '@angular/core';
 export class NgxTutorialOverlayDirective {
     wrapper: HTMLDivElement;
 
-    constructor(private el: ElementRef, private viewContainerRef: ViewContainerRef) {
+    constructor(
+        private el: ElementRef,
+        private viewContainerRef: ViewContainerRef,
+        private componentFactoryResolver: ComponentFactoryResolver
+    ) {
         this.wrapper = document.createElement('div');
         this.wrapper.setAttribute('style', `
         background-color: red; z-index: 15; position: absolute;
@@ -21,6 +33,9 @@ export class NgxTutorialOverlayDirective {
         background-color: rgba(0, 0, 0, 0.589);
         `);
         const parent = this.el.nativeElement.parentElement;
+        const compFactory = this.componentFactoryResolver.resolveComponentFactory(TestComponent);
+        const compRef = viewContainerRef.createComponent(compFactory);
+        compRef.instance.test = 'test input changed!';
         parent.prepend(this.wrapper);
         console.log(parent);
     }
