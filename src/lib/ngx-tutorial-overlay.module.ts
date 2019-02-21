@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { NgxTutorialOverlayComponent } from './ngx-tutorial-overlay.component';
-import { NgxTutorialOverlayDirective, TestComponent } from './ngx-tutorial-overlay.directive';
+import { NgxTutorialOverlayDirective } from './ngx-tutorial-overlay.directive';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
-  declarations: [NgxTutorialOverlayComponent, NgxTutorialOverlayDirective, TestComponent],
-  entryComponents: [TestComponent],
+  declarations: [NgxTutorialOverlayComponent, NgxTutorialOverlayDirective,  ],
+  entryComponents: [NgxTutorialOverlayComponent ],
   imports: [
+    CommonModule
   ],
   exports: [NgxTutorialOverlayComponent, NgxTutorialOverlayDirective]
 })
