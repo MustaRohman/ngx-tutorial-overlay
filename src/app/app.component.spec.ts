@@ -1,9 +1,11 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { NgxTutorialOverlayModule } from '../../projects/ngx-tutorial-overlay/src/public_api';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [NgxTutorialOverlayModule],
       declarations: [
         AppComponent
       ],
