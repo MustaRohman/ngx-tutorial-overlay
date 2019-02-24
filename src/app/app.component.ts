@@ -9,17 +9,17 @@ import { NgxTutorialOverlayService } from 'projects/ngx-tutorial-overlay/src/pub
 export class AppComponent implements AfterViewInit {
   title = 'ng-in-app-tutorial';
   wrapper: HTMLDivElement;
+  list = ['input'];
   @ViewChild('pageRoot') pageRoot: any;
 
   constructor(
     private ngxTutorial: NgxTutorialOverlayService
   ) {
-    // ngxTutorial.create();
   }
 
   ngAfterViewInit() {
     console.log(this.pageRoot);
-    this.ngxTutorial.create('pageRoot');
+    // this.ngxTutorial.create('pageRoot');
 
   }
 

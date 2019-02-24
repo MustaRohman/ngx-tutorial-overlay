@@ -1,5 +1,12 @@
 import { Injectable, ViewChild } from '@angular/core';
 
+export interface ComponentOption {
+  id: string;
+  title: string;
+  description: string;
+  children?: ComponentOption[];
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -9,6 +16,10 @@ export class NgxTutorialOverlayService {
 
   constructor() { }
 
+  /**
+   * Must be called in ngAfterViewInit component lifecycle hook
+   * @param rootId id of page/container root component
+   */
   create(rootId: string) {
     this.wrapper = document.createElement('div');
     this.wrapper.setAttribute('style', `

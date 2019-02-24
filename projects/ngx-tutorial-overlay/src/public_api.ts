@@ -4,4 +4,5 @@
 
 export * from './lib/ngx-tutorial-overlay.service';
 export * from './lib/ngx-tutorial-overlay.component';
+export * from './lib/ngx-tutorial-overlay.directive';
 export * from './lib/ngx-tutorial-overlay.module';
