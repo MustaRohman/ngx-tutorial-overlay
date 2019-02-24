@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, ComponentRef } from '@angular/core';
+import { ComponentOption } from './ngx-tutorial-overlay.service';
 
 @Component({
   selector: 'lib-ngx-tutorial-overlay',
@@ -31,7 +32,7 @@ import { Component, OnInit, Input, ComponentRef } from '@angular/core';
 })
 export class NgxTutorialOverlayComponent implements OnInit {
 
-  @Input() list: any[];
+  @Input() list: ComponentOption[];
   @Input() ref: ComponentRef<any>;
   show = true;
 
