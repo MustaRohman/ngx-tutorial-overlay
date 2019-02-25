@@ -1,4 +1,4 @@
-import { Directive, Input, OnChanges } from '@angular/core';
+import { Directive, Input, OnChanges, ElementRef } from '@angular/core';
 import { ElementOption } from './ngx-tutorial-overlay.directive';
 
 @Directive({
@@ -8,10 +8,11 @@ export class NgxTutorialItemDirective implements OnChanges {
 
     @Input() libTutorialItem: ElementOption;
 
-    constructor() {
+    constructor(
+        public el: ElementRef,
+    ) {
     }
 
     ngOnChanges() {
-        console.log('NgxTutorialItemDirective', this.libTutorialItem);
     }
 }

@@ -1,5 +1,5 @@
 // tslint:disable-next-line:max-line-length
-import { Directive, ElementRef, ViewContainerRef, Component, ComponentFactory, ComponentFactoryResolver, Input, AfterViewInit, DoCheck, OnChanges, ViewChildren, ContentChild, ContentChildren, QueryList } from '@angular/core';
+import { Directive, ElementRef, ViewContainerRef, Component, ComponentFactory, ComponentFactoryResolver, Input, AfterViewInit, DoCheck, OnChanges, ViewChildren, ContentChild, ContentChildren, QueryList, Renderer2 } from '@angular/core';
 import { NgxTutorialOverlayComponent } from './ngx-tutorial-overlay.component';
 import { NgxTutorialItemDirective } from './ngx-tutorial-item.directive';
 import { Content } from '@angular/compiler/src/render3/r3_ast';
@@ -22,6 +22,7 @@ export class NgxTutorialOverlayDirective implements OnChanges, AfterViewInit {
 
     constructor(
         private el: ElementRef,
+        private renderer: Renderer2,
         private viewContainerRef: ViewContainerRef,
         private componentFactoryResolver: ComponentFactoryResolver
     ) {
@@ -40,7 +41,16 @@ export class NgxTutorialOverlayDirective implements OnChanges, AfterViewInit {
     }
 
     ngAfterViewInit() {
-        console.log('ngOnChanges.children', this.children.toArray());
+        const childrenArr = this.children.toArray();
+        console.log('ngOnChanges.children', childrenArr);
+        childrenArr.forEach(item => {
+            const elem = item.el.nativeElement;
+            this.renderer.setStyle(elem, 'position', 'relative');
+            this.renderer.setStyle(elem, 'z-index', '25');
+            this.renderer.setStyle(elem, 'border', 'dashed 1px white');
+            this.renderer.setStyle(elem, 'border-radius', '10px');
+            this.renderer.setStyle(elem, 'padding', '5px');
+        });
     }
 
 }
