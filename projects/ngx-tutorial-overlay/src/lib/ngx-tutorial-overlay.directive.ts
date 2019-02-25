@@ -5,9 +5,9 @@ import { NgxTutorialItemDirective } from './ngx-tutorial-item.directive';
 import { Content } from '@angular/compiler/src/render3/r3_ast';
 
 export interface ElementOption {
-    id: string;
     title: string;
     description: string;
+    position: 'top' | 'bottom' | 'left' | 'right';
     children: ElementOption[];
 }
 
@@ -45,11 +45,14 @@ export class NgxTutorialOverlayDirective implements OnChanges, AfterViewInit {
         console.log('ngOnChanges.children', childrenArr);
         childrenArr.forEach(item => {
             const elem = item.el.nativeElement;
+            // Get position of item
+            // Place New component based on item...position
             this.renderer.setStyle(elem, 'position', 'relative');
             this.renderer.setStyle(elem, 'z-index', '25');
-            this.renderer.setStyle(elem, 'border', 'dashed 1px white');
+            this.renderer.setStyle(elem, 'background-color', 'white');
             this.renderer.setStyle(elem, 'border-radius', '10px');
             this.renderer.setStyle(elem, 'padding', '5px');
+            // this.renderer.addClass(elem, '');
         });
     }
 
