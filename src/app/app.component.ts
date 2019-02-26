@@ -10,6 +10,7 @@ export class AppComponent implements AfterViewInit {
   title = 'ng-in-app-tutorial';
   wrapper: HTMLDivElement;
   list = ['input'];
+  index = 0;
   @ViewChild('pageRoot') pageRoot: any;
 
   constructor(
@@ -20,7 +21,14 @@ export class AppComponent implements AfterViewInit {
   ngAfterViewInit() {
     console.log(this.pageRoot);
     // this.ngxTutorial.create('pageRoot');
-
+    // setInterval(() => {
+    //   if (this.index < 4) {
+    //     this.index++;
+    //   } else {
+    //     this.index = 0;
+    //   }
+    //   console.log(this.index);
+    // }, 1000);
   }
 
 }

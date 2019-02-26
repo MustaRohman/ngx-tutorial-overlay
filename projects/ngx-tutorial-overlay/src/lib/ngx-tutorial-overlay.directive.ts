@@ -16,9 +16,20 @@ export interface ElementOption {
 })
 export class NgxTutorialOverlayDirective implements OnChanges, AfterViewInit {
     wrapper: HTMLDivElement;
+    highlightedStyle = `
+            position: relative;
+            z-index: 25;
+            background-color: white;
+            border-radius: 10px;
+            padding: 2px
+        `;
     @Input() libTutorialOverlay: ElementOption[] = [];
-    compRef: any;
+    @Input() index = 0;
     @ContentChildren(NgxTutorialItemDirective) children: QueryList<NgxTutorialItemDirective>;
+
+    _index = 0;
+    compRef: any;
+    currentHighlightedItem: NgxTutorialItemDirective;
 
     constructor(
         private el: ElementRef,
@@ -38,22 +49,32 @@ export class NgxTutorialOverlayDirective implements OnChanges, AfterViewInit {
     ngOnChanges() {
         console.log('ngOnChanges', this.libTutorialOverlay);
         this.compRef.instance.list = this.libTutorialOverlay;
+
+        // this.currentHighlightedItem.
+        if (this.children) {
+            const childrenArr = this.children.toArray();
+            if (this.index !== null) {
+                const elem = childrenArr[this.index].el.nativeElement;
+                this.highlightItem(elem);
+            }
+        }
     }
 
     ngAfterViewInit() {
         const childrenArr = this.children.toArray();
         console.log('ngOnChanges.children', childrenArr);
-        childrenArr.forEach(item => {
-            const elem = item.el.nativeElement;
-            // Get position of item
-            // Place New component based on item...position
-            this.renderer.setStyle(elem, 'position', 'relative');
-            this.renderer.setStyle(elem, 'z-index', '25');
-            this.renderer.setStyle(elem, 'background-color', 'white');
-            this.renderer.setStyle(elem, 'border-radius', '10px');
-            this.renderer.setStyle(elem, 'padding', '5px');
-            // this.renderer.addClass(elem, '');
-        });
+        //     // Get position of item
+        //     // Place New component based on item...position
+        //     // this.renderer.addClass(elem, '');
+        if (this.index !== null) {
+            this.currentHighlightedItem = childrenArr[this.index];
+            const elem = this.currentHighlightedItem.el.nativeElement;
+            this.highlightItem(elem);
+        }
+    }
+
+    private highlightItem(elem) {
+        this.renderer.setAttribute(elem, 'style', this.highlightedStyle);
     }
 
 }
