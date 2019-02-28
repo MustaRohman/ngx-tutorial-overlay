@@ -10,7 +10,7 @@ export class AppComponent implements AfterViewInit {
   title = 'ng-in-app-tutorial';
   wrapper: HTMLDivElement;
   list = ['input'];
-  index = 0;
+  index = 1;
   @ViewChild('pageRoot') pageRoot: any;
 
   constructor(
