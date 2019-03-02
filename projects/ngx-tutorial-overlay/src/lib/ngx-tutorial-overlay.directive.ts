@@ -21,7 +21,6 @@ export class NgxTutorialOverlayDirective implements OnChanges, AfterViewInit {
             z-index: 25;
             background-color: white;
             border-radius: 10px;
-            padding: 2px;
         `;
     @Input() libTutorialOverlay: ElementOption[] = [];
     @Input() index = 0;
