@@ -6,7 +6,7 @@ import { NgxTutorialOverlayModule } from 'projects/ngx-tutorial-overlay/src/publ
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     NgxTutorialOverlayModule,
