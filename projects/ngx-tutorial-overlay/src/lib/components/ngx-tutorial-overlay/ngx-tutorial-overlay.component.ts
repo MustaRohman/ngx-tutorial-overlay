@@ -61,6 +61,9 @@ export class NgxTutorialOverlayComponent implements OnInit, AfterViewInit, OnCha
       case 'left': {
         return overlayItemProp.item.top + (itemValues.offsetHeight / 2) - (this.labelHeight / 2);
       }
+      case 'right': {
+        return overlayItemProp.item.top + (itemValues.offsetHeight / 2) - (this.labelHeight / 2);
+      }
       default: {
         console.log('default');
         break;
@@ -79,6 +82,9 @@ export class NgxTutorialOverlayComponent implements OnInit, AfterViewInit, OnCha
       }
       case 'left': {
         return itemValues.left - this.labelWidth - this.spacing;
+      }
+      case 'right': {
+        return itemValues.left + itemValues.offsetWidth + this.spacing;
       }
       default: {
         console.log('default');
