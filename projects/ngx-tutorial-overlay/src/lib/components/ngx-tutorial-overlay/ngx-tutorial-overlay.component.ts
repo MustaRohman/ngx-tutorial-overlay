@@ -38,6 +38,7 @@ export class NgxTutorialOverlayComponent implements OnInit, AfterViewInit, OnCha
 
   setList(val: any[]) {
     console.log('setList', val);
+    const newVal = [...val];
     this._list = [...val];
   }
   constructor() {
@@ -50,6 +51,9 @@ export class NgxTutorialOverlayComponent implements OnInit, AfterViewInit, OnCha
   calculateTopValue(overlayItemProp: OverlayItemProperties) {
     const itemValues = overlayItemProp.item;
     switch (overlayItemProp.position) {
+      case 'above': {
+        return itemValues.top - this.labelHeight - this.spacing;
+      }
       case 'below': {
         console.log(overlayItemProp.item.top + itemValues.offsetHeight + this.labelHeight + this.spacing);
         return itemValues.top + itemValues.offsetHeight + this.spacing;
@@ -64,6 +68,9 @@ export class NgxTutorialOverlayComponent implements OnInit, AfterViewInit, OnCha
   calculateLeftValue(overlayItemProp: OverlayItemProperties) {
     const itemValues = overlayItemProp.item;
     switch (overlayItemProp.position) {
+      case 'above': {
+        return overlayItemProp.item.left + (itemValues.offsetWidth / 2) - (this.labelWidth / 2);
+      }
       case 'below': {
         return overlayItemProp.item.left + (itemValues.offsetWidth / 2) - (this.labelWidth / 2);
       }

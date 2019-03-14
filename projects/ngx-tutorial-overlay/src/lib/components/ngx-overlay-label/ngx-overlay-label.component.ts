@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-ngx-overlay-label',
+  selector: 'lib-ngx-overlay-label',
   templateUrl: './ngx-overlay-label.component.html',
   styleUrls: ['./ngx-overlay-label.component.scss']
 })
