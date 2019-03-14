@@ -38,7 +38,6 @@ export class NgxTutorialOverlayComponent implements OnInit, AfterViewInit, OnCha
 
   setList(val: any[]) {
     console.log('setList', val);
-    const newVal = [...val];
     this._list = [...val];
   }
   constructor() {
