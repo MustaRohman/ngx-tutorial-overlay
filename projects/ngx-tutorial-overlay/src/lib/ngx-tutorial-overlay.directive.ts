@@ -54,7 +54,7 @@ export class NgxTutorialOverlayDirective implements OnInit, OnChanges, AfterView
                 const rect = this.getOffset(elem);
                 console.log('rect', rect);
                 const overlayItemProp: OverlayItemProperties = {
-                    tutorialItem: {
+                    item: {
                         top: rect.top,
                         left: rect.left,
                         offsetHeight: elem.offsetHeight,

@@ -3,14 +3,21 @@ import { NgxTutorialOverlayComponent } from './components/ngx-tutorial-overlay/n
 import { NgxTutorialOverlayDirective } from './ngx-tutorial-overlay.directive';
 import { CommonModule } from '@angular/common';
 import { NgxTutorialItemDirective } from './ngx-tutorial-item.directive';
-import { NgxTutorialOverlayItemComponent } from './components/ngx-tutorial-overlay-item/ngx-tutorial-overlay-item.component';
+import { NgxOverlayLabelComponent } from './components/ngx-overlay-label/ngx-overlay-label.component';
+
+const declarables = [
+  NgxTutorialOverlayComponent,
+  NgxTutorialOverlayDirective,
+  NgxTutorialItemDirective,
+  NgxOverlayLabelComponent
+];
 
 @NgModule({
-  declarations: [NgxTutorialOverlayComponent, NgxTutorialOverlayDirective, NgxTutorialItemDirective, NgxTutorialOverlayItemComponent],
-  entryComponents: [NgxTutorialOverlayComponent, NgxTutorialOverlayItemComponent],
+  declarations: declarables,
+  entryComponents: [NgxTutorialOverlayComponent, NgxOverlayLabelComponent],
   imports: [
     CommonModule
   ],
-  exports: [NgxTutorialOverlayComponent, NgxTutorialOverlayDirective, NgxTutorialItemDirective, NgxTutorialOverlayItemComponent]
+  exports: declarables
 })
 export class NgxTutorialOverlayModule { }

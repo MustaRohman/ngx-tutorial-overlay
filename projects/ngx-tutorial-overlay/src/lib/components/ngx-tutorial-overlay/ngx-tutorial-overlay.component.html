@@ -1,4 +1,12 @@
 <div #overlay class="overlay" [style.display]="show ? 'block' : 'none'">
     <button class="exit" (click)="onExitClick()">✖️</button>
+    <div 
+        id="test"
+        *ngFor="let item of _list"
+        [style.top.px]="calculateTopValue(item)" 
+        [style.left.px]="calculateLeftValue(item)"
+        [style.width.px]="labelWidth"
+        [style.height.px]="labelHeight">
+    </div>
     {{ _list | json}}
 </div>
