@@ -65,29 +65,6 @@ export class NgxTutorialOverlayDirective implements OnInit, OnChanges, AfterView
                     description: this.currentHighlightedItem.libTutorialItem.description
                 };
                 this.compRef.instance.setList([overlayItemProp]);
-                // const testNeighbourDiv = document.createElement('div');
-                // testNeighbourDiv.style.width = '200px';
-                // testNeighbourDiv.style.height = '200px';
-                // testNeighbourDiv.style.border = '2px dashed white';
-                // testNeighbourDiv.style.display = 'inline-block';
-                // testNeighbourDiv.style.position = 'relative';
-                // testNeighbourDiv.style.top = elem.offsetHeight + 'px';
-                // testNeighbourDiv.style.zIndex = '25';
-                // console.log('left');
-
-                // const wrapper = document.createElement('div');
-                // wrapper.style.border = '2px solid blue';
-                // wrapper.style.width = 'auto';
-                // wrapper.style.height = 'auto';
-                // elem.parentNode.insertBefore(wrapper, elem);
-                // wrapper.appendChild(elem);
-                // wrapper.appendChild(testNeighbourDiv);
-
-                // Maybe forget about placing a div around the highlightedItem.
-                /**
-                 * Get position of highlighted item in *WINDOW*
-                 * And place the newly created tip element within the overlay, position relative to the highlighted item's position
-                 */
             }
         });
     }
