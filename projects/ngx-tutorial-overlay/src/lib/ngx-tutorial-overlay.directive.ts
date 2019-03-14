@@ -1,12 +1,12 @@
 // tslint:disable-next-line:max-line-length
 import { Directive, ElementRef, ViewContainerRef, Component, ComponentFactory, ComponentFactoryResolver, Input, AfterViewInit, DoCheck, OnChanges, ViewChildren, ContentChild, ContentChildren, QueryList, Renderer2, OnInit } from '@angular/core';
 import { NgxTutorialItemDirective } from './ngx-tutorial-item.directive';
-import { NgxTutorialOverlayComponent } from './components/ngx-tutorial-overlay/ngx-tutorial-overlay.component';
+import { NgxTutorialOverlayComponent, OverlayItemProperties } from './components/ngx-tutorial-overlay/ngx-tutorial-overlay.component';
 
 export interface ElementOption {
     title: string;
     description: string;
-    position: 'top' | 'bottom' | 'left' | 'right';
+    position: 'above' | 'below' | 'left' | 'right';
     children: ElementOption[];
 }
 
@@ -47,27 +47,24 @@ export class NgxTutorialOverlayDirective implements OnInit, OnChanges, AfterView
 
             const childrenArr = this.children.toArray();
             console.log('ngOnChanges.children', childrenArr);
-            //     // Get position of item
-            //     // Place New component based on item...position
-            //     // this.renderer.addClass(elem, '');
             if (this.index !== null) {
                 this.currentHighlightedItem = childrenArr[this.index];
                 const elem = this.currentHighlightedItem.el.nativeElement;
                 this.highlightItem(elem);
-                /**
-                 * Place new parent div around highlighted item
-                 * New div will contain original highlighed item PLUS new component with arrow and description
-                 * Start simple: just display description
-                 * New div will utilise Flex, with direction depending on highlighted item's ElementOption.position,
-                 *  (left/right = row, up/down = col)
-                 * Order of elements also depends on position
-                 *  */
-
                 const rect = this.getOffset(elem);
                 console.log('rect', rect);
-
-                this.compRef.instance.setList(['test']);
-                console.log('compRef.listInput', this.compRef.instance.list);
+                const overlayItemProp: OverlayItemProperties = {
+                    tutorialItem: {
+                        top: rect.top,
+                        left: rect.left,
+                        offsetHeight: elem.offsetHeight,
+                        offsetWidth: elem.offsetWidth,
+                    },
+                    title: this.currentHighlightedItem.libTutorialItem.title,
+                    position: this.currentHighlightedItem.libTutorialItem.position,
+                    description: this.currentHighlightedItem.libTutorialItem.description
+                };
+                this.compRef.instance.setList([overlayItemProp]);
                 // const testNeighbourDiv = document.createElement('div');
                 // testNeighbourDiv.style.width = '200px';
                 // testNeighbourDiv.style.height = '200px';

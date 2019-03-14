@@ -1,9 +1,14 @@
 import { Component, OnInit, Input, ComponentRef, ViewChild, AfterViewInit, OnChanges } from '@angular/core';
-export interface ComponentOption {
-  id: string;
+export interface OverlayItemProperties {
+  tutorialItem: {
+    left: number;
+    top: number;
+    offsetHeight: number;
+    offsetWidth: number;
+  };
+  position: 'above' | 'below' | 'left' | 'right';
   title: string;
   description: string;
-  children?: ComponentOption[];
 }
 
 @Component({
@@ -13,7 +18,7 @@ export interface ComponentOption {
 })
 export class NgxTutorialOverlayComponent implements OnInit, AfterViewInit, OnChanges {
 
-  private _list: any[] = [];
+  private _list: OverlayItemProperties[] = [];
   get list(): any[] {return this._list; }
   set list(newVal: any[]) {
     if (newVal === this._list) {
@@ -27,13 +32,16 @@ export class NgxTutorialOverlayComponent implements OnInit, AfterViewInit, OnCha
   @ViewChild('overlay') overlay: any;
   show = true;
 
-  setList(newVal) {
-    console.log('setList', newVal);
-    this._list = newVal;
+  setList(val: any[]) {
+    console.log('setList', val);
+    const newVal = [...val];
+    this._list = [...val];
   }
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+    console.log('ngOnInit', this._list);
   }
 
   ngAfterViewInit() {
@@ -53,7 +61,6 @@ export class NgxTutorialOverlayComponent implements OnInit, AfterViewInit, OnCha
   }
 
   ngOnChanges() {
-    console.log(this._list);
   }
 
   onExitClick() {
