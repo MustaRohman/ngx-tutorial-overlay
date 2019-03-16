@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'lib-ngx-overlay-label',
@@ -6,6 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ngx-overlay-label.component.scss']
 })
 export class NgxOverlayLabelComponent implements OnInit {
+
+  @Input() title: string;
+  @Input() description: string;
+  @Input() position: 'above' | 'below' | 'left' | 'right';
 
   constructor() { }
 
