@@ -8,4 +8,13 @@
         [style.width.px]="labelWidth"
         [style.height.px]="labelHeight">
     </div>
+    <lib-ngx-overlay-label
+    *ngFor="let item of _list"
+    [top]="calculateTopValue(item)"
+    [left]="calculateLeftValue(item)"
+    [title]="item.title"
+    [description]="item.description"
+    >
+
+    </lib-ngx-overlay-label>
 </div>
