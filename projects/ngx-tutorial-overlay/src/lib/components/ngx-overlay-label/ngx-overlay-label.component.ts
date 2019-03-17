@@ -18,12 +18,23 @@ export class NgxOverlayLabelComponent implements OnInit {
     console.log('OverlayLabel.left', value);
     this._left = value;
   }
+  @Input() set height(value: number) {
+    console.log('OverlayLabel.height', value);
+    this._height = value;
+  }
+
+  @Input() set width(value: number) {
+    console.log('OverlayLabel.width', value);
+    this._width = value;
+  }
 
   _title: string;
   _description: string;
   _position: 'above' | 'below' | 'left' | 'right';
   _top: number;
   _left: number;
+  _width = 400;
+  _height = 100;
 
   constructor() { }
 
