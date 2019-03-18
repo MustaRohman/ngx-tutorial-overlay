@@ -1,6 +1,25 @@
-#container {
+.container {
     border: 2px solid white;
     display: inline-flex;
-    flex-direction: row;
+    flex-direction: column;
     position: relative;
+    justify-content: space-evenly;
+    font-size: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+
+    .title {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.9em;
+        color: orange;
+        font-weight: 100;
+        margin: 5px;
+    }
+
+    .description {
+        color: white;
+        font-weight: 100;
+        font-size: 1.6em;
+        margin: 5px;
+    }
 }
