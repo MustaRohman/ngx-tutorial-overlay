@@ -34,7 +34,7 @@ export class NgxOverlayLabelComponent implements OnInit {
   _top: number;
   _left: number;
   _width = 400;
-  _height = 100;
+  _height = 300;
 
   constructor() { }
 

@@ -19,7 +19,7 @@ export interface OverlayItemProperties {
 export class NgxTutorialOverlayComponent implements OnInit, AfterViewInit, OnChanges {
 
   labelWidth = 400;
-  labelHeight = 100;
+  labelHeight = 150;
   spacing = 15;
 
   private _list: OverlayItemProperties[] = [];
