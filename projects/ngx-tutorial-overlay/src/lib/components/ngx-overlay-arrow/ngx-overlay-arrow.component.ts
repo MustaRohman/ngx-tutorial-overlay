@@ -31,6 +31,8 @@ export class NgxOverlayArrowComponent {
         }
     }
 
+    @Input() arrowColor = '#ffffff';
+
     transformation = '';
     constructor() {
 
